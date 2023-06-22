@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>{{ post.title }} - 제네릭</h2>
+<p>내용: {{ post.content }}</p>
+<p>작성자: {{ post.writer }}</p>
+<p>작성일: {{ post.created_at }}</p>
+<p>마지막 수정일: {{ post.updated_at }}</p>
+
+<a href="{% url 'blog:generic_edit' pk=post.pk %}">수정</a>
+
+<form action="{% url 'blog:generic_delete' pk=post.pk %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="삭제" />
+</form>
+
+{% endblock %}
