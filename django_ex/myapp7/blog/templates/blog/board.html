@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>블로그 게시판 화면</h2>
+<p>blog page</p>
+<a href="{% url 'blog:write' %}">글 작성</a>
+{% comment %} {{ posts }} {% endcomment %}
+
+{% comment %} <ul>
+    {% for post in posts %}
+        <li>{{ post.title }} {{ post.content }}</li>
+    {% endfor %}
+</ul> {% endcomment %}
+
+{% if posts %}
+    <table>
+        <thead>
+            <tr>
+                <td>제목</td>
+                <td>내용</td>
+                <td>작성자</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.content }}</td>
+                    <td>{{ post.writer }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>작성된 게시물이 없습니다.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<form action="{% url 'blog:mixin_edit' pk=post.pk %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="수정">
+</form>
+
+{% endblock %}
