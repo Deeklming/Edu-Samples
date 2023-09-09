@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chatGPT 요리 추천</title>
+
+    <!-- 외부 링크 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+  </head>
+  <body class="p-8">
+    <h1 class="my-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-4xl lg:text-5xl text-center">
+      가지고 있는
+      <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">재료</span>들로 할 수 있는 
+      <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">요리</span>를 추천해 드려요
+    </h1>
+    <h2 class="text-2xl mt-4 font-bold dark:text-white text-center">가지고 있는 음식 재료들을 입력해 주세요</h2>
+
+    <p class="text-lg font-normal lg:text-xl mt-8 dark:text-gray-600 text-center">아래의 (예시)처럼 요리 재료를 입력해 주세요</p>
+    <div class="text-lg font-normal text-gray-500 my-4 lg:text-2xl dark:text-gray-200 text-center">(예시)  쌀, 고등어, 돼지고기, 소금, 설탕, 고추, 양파, 파, 마늘, 계란</div>
+
+    <div>
+      <form action="post">
+        <div class="my-8 mx-2">
+          <input type="text" id="large-input" placeholder="재료마다 , 와 띄워쓰기를 해주세요" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <button type="submit" class="chatbtn text-gray-900 bg-white mx-2 border border-gray-400 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 mr-2 my-4 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">어떤 요리죠?</button>
+      </form>
+
+      <div class="chat block max-w p-6 mx-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <h5 class="chath5 mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"></h5>
+        <p class="chatp font-normal text-gray-700 mt-6 dark:text-gray-400"></p>
+        <div role="status" class="chatspinner text-center mt-8 hidden">
+          <svg aria-hidden="true" class="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+          </svg>
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="chat.js"></script>
+    <!-- 외부 링크 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+  </body>
+</html>
