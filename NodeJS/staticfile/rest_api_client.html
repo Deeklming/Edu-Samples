@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST_API_CLIENT TEST</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const reqUrl = "http://localhost:8080/board/";
+        const apiKey = encodeURI("M8EKDRX-RH0M8EF-KZ5PB6Q-73Z2K0A/");
+        const params = "search?keyword=하하";
+        const url = reqUrl+apiKey+params;
+        axios.get(url).then((result)=>{
+            document.querySelector("#result").textContent = JSON.stringify(result.data);
+        }).catch((err)=>{
+            console.error(err);
+        });
+    </script>
+</body>
+</html>

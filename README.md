@@ -1,1 +1,1 @@
-# OrmiBackendEdu
+# edu-etc-samples
