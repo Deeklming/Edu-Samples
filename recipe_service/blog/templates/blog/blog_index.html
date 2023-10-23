@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="main">
+  <h2 class="main-title">게시판</h2>
+
+  <div class="board-top">
+    <p class="main-desc"><strong>{{ posts|length }}개</strong>의 게시글이 있습니다.</p>
+
+    <div>
+      <label for="category" class="a11y-hidden">카테고리</label>
+      <select id="category">
+        <option>전체</option>
+        <option>공지사항</option>
+        <option>일반</option>
+      </select>
+      <form class="search-form">
+        <label for="search" class="a11y-hidden">검색</label>
+        <input id="search" type="search" placeholder="검색어를 입력해주세요">
+        <button type="submit">
+          <img src="{% static 'img/icon-search.png' %}" alt="검색">
+        </button>
+      </form>
+
+      <label for="sort" class="a11y-hidden">정렬</label>
+      <select id="sort">
+        <option>조회순</option>
+        <option>최신순</option>
+      </select>
+    </div>
+  </div>
+
+  {% if posts %}
+  <!-- 게시판 리스트 -->
+  <table class="table list">
+    <colgroup>
+      <col style="width: 40px">
+      <col style="width: 60px">
+      <col>
+      <col style="width: 100px">
+      <col style="width: 160px">
+      <col style="width: 100px">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>
+          <input type="checkbox" id="all-article">
+          <!-- <label for="all-article">페이지 전체 게시글 선택</label> -->
+        </th>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>생성일</th>
+        <th>조회수</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 게시글이 없을때 / 검색한 게시글이 없을때 -->
+      <!-- <tr>
+          <td class="nodata" colspan="5">등록된 게시물이 없습니다.</td>
+        </tr> -->
+      <!-- 게시글이 있을때 -->
+      {% for post in posts %}
+        <tr>
+          <td>
+            <input type="checkbox" id="check{{post.pk}}">
+          </td>
+          <td>{{post.pk}}</td>
+          <td>
+            <a href="{% url 'blog:blog_view' post_id=post.pk %}">{{post.title}}</a>
+          </td>
+          <td>Any</td>
+          <td>{{post.created_at|date}}</td>
+          <td>{{post.click_count}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!-- //게시판 리스트 -->
+  {% else %}
+    <h3>작성된 게시물이 없습니다.</h3>
+  {% endif %}
+
+
+  <div class="board-bottom">
+    <!-- 페이지 -->
+    <!-- <div class="pagination">
+      <a href="#"><img src="{% static 'img/first.png' %}" alt="첫번째 페이지"></a>
+      <a href="#"><img src="{% static 'img/prev.png' %}" alt="이전 페이지"></a>
+      <a href="#" class="num active">1</a>
+      <a href="#" class="num">2</a>
+      <a href="#" class="num">3</a>
+      <a href="#" class="num">4</a>
+      <a href="#" class="num">5</a>
+      <a href="#"><img src="{% static 'img/next.png' %}" alt="첫번째 페이지"></a>
+      <a href="#"><img src="{% static 'img/last.png' %}" alt="이전 페이지"></a>
+    </div> -->
+    <!-- //페이지 -->
+    <div class="btn-group">
+      <button class="btn">선택삭제</button>
+      <a href="{% url 'blog:blog_write' %}" class="btn">글쓰기</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

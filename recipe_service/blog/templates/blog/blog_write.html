@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="main">
+  <!-- 글쓰기 페이지 -->
+  <h2 class="main-title">글쓰기</h2>
+  <p class="main-desc">내용을 입력 해주세요.</p>
+
+  <form action="{% url 'blog:blog_write' %}" method="post">
+    {% csrf_token %}
+    <table class="table write">
+      <colgroup>
+        <col style="width: 120px">
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <th><label for="category">카테고리</label></th>
+          <td>
+            <select id="category">
+              <option value="1">일반</option>
+              <option value="2">공지사항</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th><label for="board-title">제목</label></th>
+          <td>{{ form.title }}</td>
+          {% comment %} <input type="text" id="board-title" name="boardTitle"> {% endcomment %}
+        </tr>
+        <tr>
+          <th><label for="board-content">내용</label></th>
+          <td>
+            {{ form.content }}
+            {% comment %} <textarea id="board-content"></textarea> {% endcomment %}
+          </td>
+        </tr>
+        <tr>
+          <th><label for="board-file">파일첨부</label></th>
+          <td>
+            <input type="file" id="board-file">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="btn-group">
+      <a href="./index.html" class="btn">목록</a>
+      {% comment %} <button type="reset" class="btn">초기화</button> {% endcomment %}
+      <button type="submit" class="btn">작성</button>
+    </div>
+  </form>
+
+  <!--  //글쓰기 페이지 -->
+</div>
+{% endblock %}
