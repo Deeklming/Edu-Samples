@@ -1,1 +1,1 @@
-# edu-etc-samples
+# etc-samples

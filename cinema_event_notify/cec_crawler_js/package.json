@@ -1,0 +1,17 @@
+{
+  "name": "cen_crawler_js",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main_crawl.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^2.1.0",
+    "pg": "^8.7.3",
+    "selenium-webdriver": "^4.3.0"
+  }
+}
